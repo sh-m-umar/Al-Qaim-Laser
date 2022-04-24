@@ -1,4 +1,5 @@
 module.exports = {
-    port: 9090,
-    private_key: '___thisIsMyPrivateKey->#123@098!___',
+    PORT: 9090,
+    DB: 'mongodb://localhost:27017/al-qaim-laser-ims',
+    PRIVATE_KEY: '___thisIsMyPrivateKey->#123@098!___',
 }

@@ -1,14 +1,15 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const config = require('./config');
-const userRoutes = require('../app/routes/user.routes');
 
 module.exports = () => {
-    var app = express();
+    const app = express();
 
-    app.set('port', config.port);
+    app.set('port', config.PORT);
     app.use(bodyParser.json());
-    app.use('/user', userRoutes);
+
+    // load all routing files
+    require('../helpers/routes-loader')({app});
 
     return app;
 };

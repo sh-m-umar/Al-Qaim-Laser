@@ -1,18 +1,18 @@
-var jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 const config = require('../config/config');
-var moment = require('moment');
+const moment = require('moment');
 
 /************************************************
   Create Token
 *************************************************/
 exports.createToken = function (user) {
-  var expire = moment().add(7, 'days').valueOf();
-  var payload = {
+  const expire = moment().add(7, 'days').valueOf();
+  const payload = {
     ...user,
     expire: expire,
   };
 
-  var token = jwt.sign(payload, config.private_key);
+  const token = jwt.sign(payload, config.PRIVATE_KEY);
   return token;
 };
 
@@ -22,7 +22,7 @@ exports.createToken = function (user) {
 exports.getTokenData = function (token) {
   return new Promise((resolve, reject) => {
     try {
-      let payload = jwt.verify(token, config.private_key);
+      let payload = jwt.verify(token, config.PRIVATE_KEY);
       if (payload.expire <= Date.now() / 1000) {
         resolve({ status: false, message: 'Token has expired' });
       } else {

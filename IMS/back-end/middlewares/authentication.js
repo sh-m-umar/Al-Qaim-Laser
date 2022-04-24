@@ -1,7 +1,7 @@
-var Token = require('../../helpers/manage-tokens');
+const Token = require('../helpers/manage-tokens');
 
 exports.requireAuthentication = function (req, res, next) {
-    var token = req.headers.token;
+    const token = req.headers.token;
 
     if (
         token === 'null' ||

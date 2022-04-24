@@ -1,10 +1,8 @@
-const express = require('express');
-const controller = require('../controllers/user.controller');
-const auth = require('../../config/middlewares/authentication');
-var router = express.Router();
+const controller = require('../controllers/users.controller');
+const auth = require('../../middlewares/authentication');
 
-router.post('/signup', controller.createUser);
-router.post('/signin', controller.verifyUser);
-router.post('/updateuser', auth.requireAuthentication, controller.updateUser);
-
-module.exports = router;
+module.exports = ( {app} ) => {
+    app.post('/user/register', controller.createUser);
+    app.post('/user/login', controller.verifyUser);
+    app.post('/user/update', auth.requireAuthentication, controller.updateUser);
+}

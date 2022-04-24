@@ -1,16 +1,43 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
-var bcrypt = require("bcrypt");
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+const bcrypt = require("bcrypt");
 
-var UserSchema = new Schema(
+const UserSchema = new Schema(
   {
-    name: { type: String },
+    firstName: { type: String },
+    lastName: { type: String },
+    username: {
+      type: String,
+      unique: true,
+      lowercase: true,
+      required: true
+	  },
     email: {
-		type: String,
-		unique: true,
-		lowercase: true
-	},
-    password: { type: String },
+      type: String,
+      unique: true,
+      lowercase: true,
+      required: true
+	  },
+    password: {
+      type: String,
+      required: true
+    },
+    phone: {
+      type: String,
+      unique: true
+    },
+    role: {
+      type: String,
+      enum: ['Admin', 'Retailer'],
+      required: true
+    },
+    address: {
+      addressLines: {type: String},
+      postcode: {type: Number},
+      city: {type: String},
+      state: {type: String},
+      country: {type: String},
+    },
   },
   {
     usePushEach: true,
@@ -19,7 +46,7 @@ var UserSchema = new Schema(
 );
 
 UserSchema.pre("save", function (next) {
-  var self = this;
+  const self = this;
   if (!self.isModified("password")) return next();
   bcrypt.genSalt(10, function (err, salt) {
     if (err) return next(err);
@@ -35,5 +62,5 @@ UserSchema.methods.comparePassword = function (password, callback) {
   bcrypt.compare(password, this.password, callback);
 };
 
-var Model = mongoose.model("User", UserSchema);
+const Model = mongoose.model("User", UserSchema);
 module.exports = Model;
