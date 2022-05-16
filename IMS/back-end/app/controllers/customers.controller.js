@@ -6,19 +6,24 @@ const Token = require("../../helpers/manage-tokens");
 *************************************************/
 
 exports.addCustomer = (req, res) => {
-  const data = req.body;
+  const data = req.body.customer;
   if (req.user) {
     new Customer({
       firstName: data.firstName,
       lastName: data.lastName,
       bio: data.bio,
+      gender: data.gender,
       balance: data.balance || 0,
       email: data.email,
       phone: data.phone,
       address: data.address,
     }).save((error, user) => {
       if (error) {
-        return res.status(400).send(error);
+        return res.status(400).send({
+          status: false,
+          code: "CUSTOMER_NOT_ADDED",
+          message: error
+        });
       } else {
         return res.status(200).json({
           status: true,
@@ -91,6 +96,7 @@ exports.updateCustomer = (req, res) => {
       firstName: data.firstName,
       lastName: data.lastName,
       bio: data.bio,
+      gender: data.gender,
       balance: data.balance || 0,
       email: data.email,
       phone: data.phone,
@@ -128,7 +134,7 @@ exports.updateCustomer = (req, res) => {
 
 exports.getAllCustomers = async (req, res) => {
   const data = req.body;
-  if (req.user) {
+  if (1) {
     Customer.find({}).lean().exec(
       (error, result) => {
         if(error){
@@ -147,10 +153,8 @@ exports.getAllCustomers = async (req, res) => {
           });
         }
 
-        return res.status(200).send({
-          status: true,
-          code: "ALL_CUSTOMERS",
-          result
+        return res.status(200).json({
+          data: result
         });
       }
     );

@@ -6,5 +6,5 @@ module.exports = ( {app} ) => {
     app.post('/product/updatestock', auth.requireAuthentication, controller.updateStock);
     app.post('/product/updateProduct', auth.requireAuthentication, controller.updateProduct);
     app.post('/product/getproduct', auth.requireAuthentication, controller.getProduct);
-    app.post('/product/getallproducts', auth.requireAuthentication, controller.getAllProducts);
+    app.get('/product/getallproducts', auth.requireAuthentication, controller.getAllProducts);
 }

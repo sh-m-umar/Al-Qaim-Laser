@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 
 const OrderSchema = new Schema(
   {
-    orderId: { type: Number },
+    orderId: { type: String },
     customerId: {
       type: Schema.Types.ObjectId,
       ref: 'Customer',

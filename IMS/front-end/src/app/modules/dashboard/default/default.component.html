@@ -1,0 +1,180 @@
+<div class="d-flex justify-content-end">
+	<mat-form-field color="primary" >
+		<mat-label>Enter a date range</mat-label>
+		<mat-date-range-input [formGroup]="dateRange" [rangePicker]="picker">
+		  <input matStartDate formControlName="from" placeholder="Start date" />
+		  <input
+			matEndDate
+			formControlName="to"
+			placeholder="End date"
+			(dateInput)="filterData()"
+		  />
+		</mat-date-range-input>
+		<!-- <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint> -->
+		<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+		<mat-date-range-picker #picker></mat-date-range-picker>
+	  </mat-form-field>
+</div>
+<div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
+	<div class="col">
+		<div class="card radius-10 border-start border-0 border-3 border-info">
+			<div class="card-body">
+				<div class="d-flex align-items-center">
+					<div>
+						<p class="mb-0 text-secondary">Total Orders</p>
+						<h4 class="my-1 text-info">{{stats.ordersCount}}</h4>
+						<p class="mb-0 font-13">Total number of invoices</p>
+					</div>
+					<div class="widgets-icons-2 rounded-circle bg-gradient-scooter text-white ms-auto"><i class='bx bxs-cart'></i>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col">
+		<div class="card radius-10 border-start border-0 border-3 border-danger">
+			<div class="card-body">
+				<div class="d-flex align-items-center">
+					<div>
+						<p class="mb-0 text-secondary">Products Sold</p>
+						<h4 class="my-1 text-danger">{{stats.productsSold}}</h4>
+						<p class="mb-0 font-13">Total products sold</p>
+					</div>
+					<div class="widgets-icons-2 rounded-circle bg-gradient-bloody text-white ms-auto"><i class='bx bxs-wallet'></i>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col">
+		<div class="card radius-10 border-start border-0 border-3 border-success">
+			<div class="card-body">
+				<div class="d-flex align-items-center">
+					<div>
+						<p class="mb-0 text-secondary">Customers</p>
+						<h4 class="my-1 text-success">{{stats.newCustomersCount}}</h4>
+						<p class="mb-0 font-13">Customers of specific date</p>
+					</div>
+					<div class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-white ms-auto"><i class='bx bxs-user-circle'></i>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col">
+		<div class="card radius-10 border-start border-0 border-3 border-warning">
+			<div class="card-body">
+				<div class="d-flex align-items-center">
+					<div>
+						<p class="mb-0 text-secondary">Total Customers</p>
+						<h4 class="my-1 text-warning">{{stats.customersCount}}</h4>
+						<p class="mb-0 font-13">Your total customers</p>
+					</div>
+					<div class="widgets-icons-2 rounded-circle bg-gradient-blooker text-white ms-auto"><i class='bx bxs-group'></i>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--end row-->
+
+<!--end row-->
+<div class="row row-cols-1 row-cols-lg-3">
+	<div class="col-12 col-lg-4">
+		<div class="card radius-10">
+			<div class="card-body">
+				<div class="d-flex align-items-center">
+					<div>
+						<h6 class="mb-0">Trending Products</h6>
+					</div>
+					<!-- <div class="dropdown ms-auto"> <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
+                     </a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="javascript:;">Action</a>
+							</li>
+							<li><a class="dropdown-item" href="javascript:;">Another action</a>
+							</li>
+							<li>
+								<hr class="dropdown-divider">
+							</li>
+							<li><a class="dropdown-item" href="javascript:;">Something else here</a>
+							</li>
+						</ul>
+					</div> -->
+				</div>
+				<div class="chart-container-2 mt-4">
+					<canvas id="chart2"></canvas>
+				</div>
+			</div>
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">{{trendingProducts.lable[0] || "-"}} <span class="badge bg-success rounded-pill">{{trendingProducts.data[0] || 0}}</span>
+				</li>
+				<li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">{{trendingProducts.lable[1] || "-"}} <span class="badge bg-danger rounded-pill">{{trendingProducts.data[1] || 0}}</span>
+				</li>
+				<li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">{{trendingProducts.lable[2] || "-"}} <span class="badge bg-primary rounded-pill">{{trendingProducts.data[2] || 0}}</span>
+				</li>
+				<li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">{{trendingProducts.lable[3] || "-"}} <span class="badge bg-warning text-dark rounded-pill">{{trendingProducts.data[3] || 0}}</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- <div class="col d-flex">
+		<div class="card radius-10 w-100">
+			<div class="card-body">
+				<p class="font-weight-bold mb-1 text-secondary">Weekly Revenue</p>
+				<div class="d-flex align-items-center mb-4">
+					<div>
+						<h4 class="mb-0">$89,540</h4>
+					</div>
+					<div class="">
+						<p class="mb-0 align-self-center font-weight-bold text-success ms-2">4.4% <i class="bx bxs-up-arrow-alt mr-2"></i>
+						</p>
+					</div>
+				</div>
+				<div class="chart-container-0">
+					<canvas id="chart3"></canvas>
+				</div>
+			</div>
+		</div>
+	</div> -->
+	<div class="col d-flex">
+		<div class="card radius-10 w-100">
+			<div class="card-header bg-transparent">
+				<div class="d-flex align-items-center">
+					<div>
+						<h6 class="mb-0">Account Balance</h6>
+					</div>
+					<!-- <div class="dropdown ms-auto"> <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
+                             </a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="javascript:;">Action</a>
+							</li>
+							<li><a class="dropdown-item" href="javascript:;">Another action</a>
+							</li>
+							<li>
+								<hr class="dropdown-divider">
+							</li>
+							<li><a class="dropdown-item" href="javascript:;">Something else here</a>
+							</li>
+						</ul>
+					</div> -->
+				</div>
+			</div>
+			<div class="card-body">
+				<div class="chart-container-1">
+					<canvas id="chart4"></canvas>
+				</div>
+			</div>
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">Total Sale <span class="badge bg-gradient-quepal rounded-pill">{{amountBalance.totalSalesAmount}}</span>
+				</li>
+				<li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">Amount Collected <span class="badge bg-gradient-ibiza rounded-pill">{{amountBalance.amountTaken}}</span>
+				</li>
+				<li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">Balance <span class="badge bg-gradient-deepblue rounded-pill">{{amountBalance.totalBalance}}</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<!--end row-->

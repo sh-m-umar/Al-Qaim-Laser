@@ -10,9 +10,11 @@ const CustomerSchema = new Schema(
     email: {
       type: String,
       unique: true,
+      required: false,
       lowercase: true
 	  },
     bio: { type: String },
+    gender: { type: String },
     phone: {
       type: String,
       unique: true,

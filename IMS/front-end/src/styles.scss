@@ -1,1 +1,54 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+a {
+  color: #0d6efd;
+  text-decoration: none !important;
+}
+
+.success-snackbar {
+    background: #589444;
+    color: white;
+  
+    button {
+      color: white;
+    }
+  }
+  
+  .success-snackbar:hover {
+    background: #278806;
+  }
+  
+  .info-snackbar {
+    background: #5178ac;
+    color: white;
+  }
+  
+  .info-snackbar:hover {
+    background: #2d6aba;
+  }
+  
+  .warn-snackbar {
+    background: #e2cb6e;
+    color: black;
+  }
+  
+  .warn-snackbar:hover {
+    background: #ffcc00;
+  }
+  
+  .danger-snackbar {
+    background: #c2524c;
+    color: white;
+  
+    button {
+      color: white;
+    }
+  }
+  
+  .danger-snackbar:hover {
+    background: #c0251d;
+  }
+  

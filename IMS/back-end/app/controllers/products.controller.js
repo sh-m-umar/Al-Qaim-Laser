@@ -1,5 +1,8 @@
 const Product = require("../../database/models/product.model");
+const SaleRecord = require('../../database/models/saleRecord.model');
 const Token = require("../../helpers/manage-tokens");
+const ObjectId = require('mongoose').Types.ObjectId; 
+
 
 /************************************************
     Add New Product
@@ -46,7 +49,7 @@ exports.getProduct = async (req, res) => {
 
   if (req.user) {
     Product.find({ sku: data.sku }).lean().exec(
-      (error, result) => {
+      async (error, result) => {
         if(error){
           return res.status(200).send({
             status: false,
@@ -63,10 +66,12 @@ exports.getProduct = async (req, res) => {
           });
         }
 
+        result[0].totalSale = await SaleRecord.countDocuments({productId: ObjectId(result[0]._id)});
+
         return res.status(200).send({
           status: true,
           code: "PRODUCT_FOUND",
-          result
+          product: result[0]
         });
       }
     );
@@ -108,7 +113,7 @@ exports.getAllProducts = async (req, res) => {
         return res.status(200).send({
           status: true,
           code: "ALL_PRODUCTS",
-          result
+          products: result
         });
       }
     );

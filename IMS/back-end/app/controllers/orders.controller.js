@@ -14,7 +14,7 @@ exports.addOrder = async (req, res) => {
   const data = req.body;
   
   if (req.user) {
-    const orderId = crypto.randomInt(0, 1000000);
+    const orderId = 'AQL-' + crypto.randomInt(0, 1000000);
 
     new Order({
       orderId,

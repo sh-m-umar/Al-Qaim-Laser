@@ -6,7 +6,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Rocker": {
+    "AlQaimLasers": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -25,8 +25,8 @@
           "options": {
             "allowedCommonJsDependencies": [
               "chart.js"
-           ],
-            "outputPath": "dist/Rocker",
+            ],
+            "outputPath": "dist/AlQaimLasers",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -40,9 +40,10 @@
               "src/assets/css/icons.css",
               "node_modules/angular-calendar/css/angular-calendar.css",
               "node_modules/flatpickr/dist/flatpickr.min.css",
-              "src/assets/plugins/datatable/css/dataTables.bootstrap5.min.css",
               "src/assets/sass/app.scss",
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/datatables.net-bs5/css/dataTables.bootstrap5.min.css"
             ],
             "scripts": [
               "node_modules/chart.js/dist/Chart.min.js",
@@ -52,13 +53,18 @@
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
               "src/assets/plugins/jvector-map/jquery-jvectormap-2.0.2.min.js",
               "src/assets/plugins/jvector-map/jquery-jvectormap-world-mill-en.js",
-              "src/assets/plugins/datatable/js/jquery.dataTables.min.js",
-              "src/assets/plugins/datatable/js/dataTables.bootstrap5.min.js",
               "src/assets/plugins/sparkline-charts/jquery.sparkline.min.js",
               "src/assets/plugins/morris/js/morris.js",
               "src/assets/plugins/raphael/raphael-min.js",
               "src/assets/plugins/chartjs/js/Chart.extension.js",
-              "src/assets/vendor/pace/pace.min.js"
+              "src/assets/vendor/pace/pace.min.js",
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/datatables.net/js/jquery.dataTables.min.js",
+              "node_modules/datatables.net-bs5/js/dataTables.bootstrap5.min.js",
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/datatables.net/js/jquery.dataTables.js",
+              "node_modules/bootstrap/dist/js/bootstrap.js"
             ]
           },
           "configurations": {
@@ -98,10 +104,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Rocker:build:production"
+              "browserTarget": "AlQaimLasers:build:production"
             },
             "development": {
-              "browserTarget": "Rocker:build:development"
+              "browserTarget": "AlQaimLasers:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -109,7 +115,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Rocker:build"
+            "browserTarget": "AlQaimLasers:build"
           }
         },
         "test": {
@@ -133,5 +139,5 @@
       }
     }
   },
-  "defaultProject": "Rocker"
+  "defaultProject": "AlQaimLasers"
 }
