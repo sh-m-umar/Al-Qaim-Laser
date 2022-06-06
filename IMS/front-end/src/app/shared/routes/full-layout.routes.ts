@@ -10,17 +10,17 @@ export const Full_ROUTES: Routes = [
     {
         path: 'invoice',
         loadChildren: () => import('../../modules/invoice/invoice.module').then(m => m.InvoiceModule)
-        
+
     },
     {
         path: 'product',
         loadChildren: () => import('../../modules/products/product.module').then(m => m.ProductModule)
-        
+
     },
     {
         path: 'customer',
         loadChildren: () => import('../../modules/customers/customer.module').then(m => m.CustomerModule)
-        
+
     },
     {
         path: 'stock',
@@ -34,6 +34,11 @@ export const Full_ROUTES: Routes = [
     {
         path: 'user-profile',
         loadChildren: () => import('../../modules/user-profile/user-profile.module').then(m => m.UserProfileModule)
+
+    },
+    {
+        path: 'auth',
+        loadChildren: () => import('../../modules/auth/auth.module').then(m => m.AuthModule)
 
     }
 ];

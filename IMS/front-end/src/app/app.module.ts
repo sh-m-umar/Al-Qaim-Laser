@@ -12,7 +12,6 @@ import { AgmCoreModule } from '@agm/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-
 import { ContentLayoutComponent } from "./modules/layouts/content/content-layout.component";
 import { FullLayoutComponent } from "./modules/layouts/full/full-layout.component";
 

@@ -1,5 +1,6 @@
 import { Component , OnInit } from '@angular/core';
 import { SidebarService } from '../sidebar/sidebar.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,7 +11,9 @@ import { SidebarService } from '../sidebar/sidebar.service';
 
 export class NavbarComponent implements OnInit{
 
-    constructor(public sidebarservice: SidebarService) { }
+    constructor(
+        public sidebarservice: SidebarService,
+        public router: Router) { }
         
     toggleSidebar() {
         this.sidebarservice.setSidebarState(!this.sidebarservice.getSidebarState());
@@ -24,17 +27,12 @@ export class NavbarComponent implements OnInit{
         this.sidebarservice.setSidebarState(true);
     }
 
-    ngOnInit() {
+    ngOnInit() { }
 
-        /* Search Bar */
-        $(document).ready(function () {
-            $(".mobile-search-icon").on("click", function () {
-                $(".search-bar").addClass("full-search-bar")
-            }), 
-            $(".search-close").on("click", function () {
-                $(".search-bar").removeClass("full-search-bar")
-            })
-        });
-
+    navigate(type) {
+        if (type == 'package') { this.router.navigate(['product/list-products'])}
+        if (type == 'user') { this.router.navigate(['customer/list-customer'])}
+        if (type == 'box') { this.router.navigate(['stock'])}
+        if (type == 'profile') { this.router.navigate(['user-profile'])}
     }
 }

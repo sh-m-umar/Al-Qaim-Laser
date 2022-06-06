@@ -16,7 +16,7 @@ export class AddNewCustomersComponent implements OnInit {
     lastName: ['', [Validators.required, Validators.minLength(2)]],
     email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
     bio: ['', [Validators.maxLength(500)]],
-    balance: ['', [Validators.pattern('^[1-9]+[0-9]*$')]],
+    balance: ['', [Validators.pattern('^[0-9]+[0-9]*$')]],
     phone: ['', [Validators.required, Validators.maxLength(13), Validators.pattern('^(03|\\+923)[0-4][0-9]{8}$')]],
     address: this.fb.group({
       streetAddress: [''],

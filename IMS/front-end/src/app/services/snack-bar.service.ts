@@ -48,7 +48,7 @@ export class SnackBarService {
       horizontalPosition: 'right',
       verticalPosition: position,
       panelClass: customClass,
-      duration: 5000,
+      duration: 10000,
     });
     this.refSnack.onAction().subscribe(async () => {
       this.refSnack.dismiss();

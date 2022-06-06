@@ -19,4 +19,8 @@ export class ProductService {
   getProductDetails(sku: string){
     return this.http.post(`${this.URL}/product/getproduct`, {sku});
   }
+
+  updateStock(sku: string, stock: number){
+    return this.http.post(`${this.URL}/product/updatestock`, {sku, stock});
+  }
 }

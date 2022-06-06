@@ -148,7 +148,7 @@ exports.updateStock = async (req, res) => {
             message: error
           });
         } else {
-          return res.status(400).send({
+          return res.status(200).send({
             status: true,
             code: "STOCK_UPDATED",
             result
@@ -193,7 +193,7 @@ exports.updateProduct = async (req, res) => {
             message: error
           });
         } else {
-          return res.status(400).send({
+          return res.status(200).send({
             status: true,
             code: "STOCK_UPDATED",
             result

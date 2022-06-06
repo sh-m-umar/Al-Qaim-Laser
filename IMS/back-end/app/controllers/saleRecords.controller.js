@@ -2,6 +2,7 @@ const Order = require("../../database/models/order.model");
 const Product = require("../../database/models/product.model");
 const Customer = require("../../database/models/customer.model");
 const SaleRecord = require('../../database/models/saleRecord.model');
+const moment = require('moment');
 
 /************************************************
     Get Customer Sales Record
@@ -142,6 +143,46 @@ exports.getSaleRecordByDate = async (req, res) => {
         status: true,
         code: "SALE_RECORD_FOUND",
         result
+      });
+    }
+  );
+  } else {
+    return res.status(200).send({
+      status: false,
+      code: "NOT_LOGEDIN",
+      message: "Please Login first."
+    });
+  }
+};
+
+/************************************************
+    Get All Sold Products
+*************************************************/
+
+exports.getAllSoldProducts = async (req, res) => {
+  const data = req.body;
+
+  if (1) {
+    SaleRecord.find({}).
+    populate('productId', 'name sku').
+    populate('customerId', 'firstName phone').
+    populate('orderId', 'orderId').
+    lean().exec(
+    (error, result) => {
+      if(error){
+        return res.status(200).send({
+          status: false,
+          code: "ERROR",
+          message: error
+        });
+      }
+
+      result.forEach( (ele) => {
+        ele.created_at =  moment(ele.created_at).utc().format('YYYY-MM-DD');
+      });
+
+      return res.status(200).json({
+        data: result
       });
     }
   );

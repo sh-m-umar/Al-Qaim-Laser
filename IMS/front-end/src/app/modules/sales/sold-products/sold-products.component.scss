@@ -1,0 +1,20 @@
+/* Add application styles & imports to this file! */
+@import url("https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css");
+
+table.dataTable {
+    margin-top: 30px !important;
+}
+
+table, th, td, tr{
+  	text-align: center !important;
+}
+
+::ng-deep table.dataTable>thead .sorting:before,
+::ng-deep table.dataTable>thead .sorting:after,
+::ng-deep table.dataTable>thead .sorting_asc:before,
+::ng-deep table.dataTable>thead .sorting_desc:after,
+::ng-deep table.dataTable>thead .sorting_asc:after,
+::ng-deep table.dataTable>thead .sorting_desc:before {
+    content: none !important;
+}
+

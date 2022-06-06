@@ -9,7 +9,8 @@ import { FooterComponent } from "./footer/footer.component";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { SidebarComponent } from "./sidebar/sidebar.component";
 import { ColorSwitcherComponent } from './color-switcher/color-switcher.component';
-
+import { DeleteModalComponent } from './components/delete-modal/delete-modal.component';
+import { MaterialModule } from "src/assets/angular-material.module";
 
 
 @NgModule({
@@ -25,13 +26,15 @@ import { ColorSwitcherComponent } from './color-switcher/color-switcher.componen
         RouterModule,
         CommonModule,
         NgbModule,
-        PerfectScrollbarModule
+        PerfectScrollbarModule,
+        MaterialModule
     ],
     declarations: [
         FooterComponent,
         NavbarComponent,
         SidebarComponent,
-        ColorSwitcherComponent
+        ColorSwitcherComponent,
+        DeleteModalComponent
     ],
     providers: [ ],
 })

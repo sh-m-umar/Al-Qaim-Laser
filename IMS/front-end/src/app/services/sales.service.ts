@@ -12,4 +12,8 @@ export class SalesService {
 
   constructor(private http: HttpClient) { }
 
+  getAllProducts(){
+    return this.http.get(`${this.URL}/salerecord/getallsoldproducts`);
+  }
+
 }
